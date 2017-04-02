@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').directive('ngThumb', ['$window', function($window) {
+angular.module('ngThumb', []).directive('ngThumb', ['$window', function($window) {
     var helper = {
         support: !!($window.FileReader && $window.CanvasRenderingContext2D),
         isFile: function(item) {
@@ -18,11 +18,9 @@ angular.module('app').directive('ngThumb', ['$window', function($window) {
           file: '=ngThumb',
           height: '=',
           width: '='
-        }
+        },
         link: function(scope, element, attributes) {
             if (!helper.support) return;
-
-
             if (!helper.isFile(scope.file)) return;
             if (!helper.isImage(scope.file)) return;
 
